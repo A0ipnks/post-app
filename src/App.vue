@@ -4,7 +4,7 @@ import ListComp from './components/ListComp.vue';
 import { ref } from 'vue';
 import { Posts } from '@/type/type';
 
-const posts = ref<Posts[]>([])
+// const posts = ref<Posts[]>([])
 
 </script>
 
