@@ -5,8 +5,12 @@ import { ref } from 'vue'
 const post = ref("")
 
 const submit = () => {
-  emits("submit", post.value)
-  post.value = ""
+  if (post.value != "") {
+    emits("submit", post.value)
+    post.value = ""
+  } else {
+    alert("入力がありません。")
+  }
 }
 
 const emits = defineEmits(["submit"])

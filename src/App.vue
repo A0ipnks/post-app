@@ -9,7 +9,6 @@ let id = 0
 
 const submitPost = (post: string) => {
   posts.value.push({ id: id++, desc: post })
-
   console.log(posts.value);
 
 }
