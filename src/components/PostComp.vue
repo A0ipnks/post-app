@@ -2,20 +2,21 @@
 <script setup lang='ts'>
 import { ref } from 'vue'
 
-const posts = ref<string>("")
+const post = ref("")
+
 const submit = () => {
-  console.log(posts.value);
-  posts.value = ""
+  emits("submit", post.value)
+  post.value = ""
 }
 
-
+const emits = defineEmits(["submit"])
 </script>
 
 <template>
   <div>
     <form class="form-container">
-      <textarea v-model="posts"></textarea>
-      <button type="submit" @click.prevent="submit">POST</button>
+      <textarea v-model="post"></textarea>
+      <button @click.prevent="submit" type="submit">POST</button>
     </form>
   </div>
 </template>

@@ -1,4 +1,4 @@
 export type Posts = {
-  id: string;
+  id: number;
   desc: string;
 }
