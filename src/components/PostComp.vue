@@ -30,13 +30,17 @@ const emits = defineEmits(["submit"])
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 30%;
+}
+
+.form-container button:hover {
+  background-color: #41B883;
+  transition: all .3s ease-in-out;
 }
 
 
-
-.form-container button {
+.form-container textarea {
   display: block;
-  margin-top: 15%;
-  background-color: #42d883;
+  margin-bottom: 5%;
 }
 </style>

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import PostComp from './components/PostComp.vue';
 import ListComp from './components/ListComp.vue';
+import settingModalComp from './components/settingModalComp.vue';
 import { ref } from 'vue';
 import { Posts } from '@/type/type';
 
@@ -9,32 +10,53 @@ let id = 0
 
 const submitPost = (post: string) => {
   posts.value.push({ id: id++, desc: post })
-  console.log(posts.value);
-
 }
 
+const isModal = ref(false)
+const openUserSetting = () => {
+  isModal.value = true
+}
+
+
+const currentUser = ref("")
+const submitUserSetting = (userName: string) => {
+  currentUser.value = userName
+  isModal.value = false
+}
 </script>
 
 <template>
-  <div class="">
+  <div class="container">
+    <div class="header">
+      <button @click="openUserSetting">ユーザー設定</button>
+    </div>
+    <p v-if="currentUser" class="username"><span>{{ currentUser }}</span>さん、お疲れ様です。</p>
+
+    <Teleport to="body">
+      <settingModalComp v-if="isModal" @submit-username="submitUserSetting" />
+    </Teleport>
     <PostComp @submit="submitPost" />
     <ListComp />
   </div>
 </template>
 
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+.header {
+  display: flex;
+  justify-content: end;
 }
 
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+p.username {
+  color: #fff;
+  display: flex;
+  justify-content: flex-end;
+  font-size: 14px;
+  align-items: baseline;
+  margin: 0;
 }
 
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+p.username span {
+  font-size: 20px;
+  color: #41B883;
 }
 </style>

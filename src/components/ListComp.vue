@@ -4,6 +4,7 @@ import { Posts } from '@/type/type'
 
 const posts = ref<Posts[]>([])
 
+// const props = defineProps()
 </script>
 
 <template>
