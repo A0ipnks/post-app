@@ -6,11 +6,19 @@ import { ref } from 'vue';
 import { Posts } from '@/type/type';
 
 const posts = ref<Posts[]>([])
-let id = 0
+let id: number = 0
 
 const submitPost = (post: string) => {
   posts.value.push({ id: id++, desc: post })
 }
+
+const deletePost = (id: number) => {
+  posts.value = posts.value.filter((t) => t.id !== id)
+  console.log(posts.value);
+}
+
+
+
 
 const isModal = ref(false)
 const openUserSetting = () => {
@@ -36,7 +44,8 @@ const submitUserSetting = (userName: string) => {
       <settingModalComp v-if="isModal" @submit-username="submitUserSetting" />
     </Teleport>
     <PostComp @submit="submitPost" />
-    <ListComp />
+    <ListComp :posts="posts" @delete-post="deletePost" />
+
   </div>
 </template>
 

@@ -19,7 +19,7 @@ const emits = defineEmits(["submit"])
 <template>
   <div>
     <form class="form-container">
-      <textarea v-model="post"></textarea>
+      <input type="text" v-model="post">
       <button @click.prevent="submit" type="submit">POST</button>
     </form>
   </div>
@@ -39,8 +39,9 @@ const emits = defineEmits(["submit"])
 }
 
 
-.form-container textarea {
-  display: block;
-  margin-bottom: 5%;
+.form-container input[type="text" i] {
+  margin: 0 auto 5%;
+  padding: 0;
+  height: 25px;
 }
 </style>
