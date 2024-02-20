@@ -38,7 +38,7 @@ const submitUserSetting = (userName: string) => {
     <div class="header">
       <button @click="openUserSetting">ユーザー設定</button>
     </div>
-    <p v-if="currentUser" class="username"><span>{{ currentUser }}</span>さん、お疲れ様です。</p>
+    <p v-if="currentUser" class="username">Hi!&nbsp;<span>{{ currentUser }}</span></p>
 
     <Teleport to="body">
       <settingModalComp v-if="isModal" @submit-username="submitUserSetting" />
